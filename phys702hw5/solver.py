@@ -31,7 +31,7 @@ from phys702hw5 import runge_kutta
 from phys702hw5 import derivatives
 
 
-def solve_python(x_init,n,h,max_iter=1000)->Tuple[List,List]:
+def solve_python(x_init:float,theta:float,h:float,max_iter=1000)->Tuple[List,List]:
     """
     Solve the Lane-Emden equation using a fourth-order Runge-Kutta method.
     
@@ -39,8 +39,8 @@ def solve_python(x_init,n,h,max_iter=1000)->Tuple[List,List]:
     ----------
     x_init : float
         The initial x value.
-    n : int
-        The index of the polytrope.
+    theta : float
+        The angle from the vertical.
     h : float
         The step size.
     max_iter : int, optional
@@ -50,12 +50,17 @@ def solve_python(x_init,n,h,max_iter=1000)->Tuple[List,List]:
     y_prev = 1
     z_prev = 0
     yprime = derivatives.get_yprime()
-    zprime = derivatives.get_zprime(n)
+    zprime = derivatives.get_zprime(theta)
     n_iter = 0
     xs = []
     ys = []
     zs = []
-    while y_prev > 0 and n_iter < max_iter:
+    def stop_condition(x,y,z):
+        if x>3.0:
+            return True
+        return False
+        
+    while not stop_condition(x_prev,y_prev,z_prev) and n_iter<max_iter:
         n_iter += 1
         xs.append(x_prev)
         ys.append(y_prev)
