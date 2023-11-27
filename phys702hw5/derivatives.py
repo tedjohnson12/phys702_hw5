@@ -73,5 +73,5 @@ def get_zprime(theta:float) -> Callable:
         float
             The zprime value.
         """
-        return (3*G)/(2*A) * sin(theta) * cos(y)
+        return (3*G)/(4*A) * sin(theta) * cos(y) # m s-2 / m = s-2
     return zprime
