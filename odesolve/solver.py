@@ -26,10 +26,9 @@ We will use a fourth-order Runge-Kutta method.
 
 """
 from typing import Tuple, List
-import numpy as np
 
-from odesolve import runge_kutta
-from odesolve import derivatives
+from phys702hw5 import runge_kutta
+from phys702hw5 import derivatives
 
 
 def solve_python(x_init,n,h,max_iter=1000)->Tuple[List,List]:
