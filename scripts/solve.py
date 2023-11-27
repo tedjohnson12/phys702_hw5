@@ -1,4 +1,5 @@
 
+from pathlib import Path
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -104,14 +105,15 @@ if __name__ in ['__main__']:
     
     x,y,z = solver.solve_python(YINIT,theta,STEP_SIZE)
     
-    plt.plot(x,y,label='\\phi (rad)')
-    plt.plot(x,z,label='\\omega (rad/s)')
+    plt.plot(x,y,label='$\\phi$ (rad)')
+    plt.plot(x,z,label='$\\omega$ (rad/s)')
     
     plt.axvline(x=XFINAL,color='k',linestyle='dashed')
     plt.axhline(y=pi/2,color='k',linestyle='dashed')
     
     plt.xlabel('time (s)')
-    plt.title(f'\\theta = {theta*180/np.pi:{FMT}} degrees')
+    plt.title(f'$\\theta$ = {theta*180/np.pi:{FMT}} degrees')
+    plt.legend()
     
-    plt.savefig('plot.png')
+    plt.savefig(Path(__file__).parent / 'solution.png')
     
