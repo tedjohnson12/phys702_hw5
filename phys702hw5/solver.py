@@ -26,19 +26,21 @@ We will use a fourth-order Runge-Kutta method.
 
 """
 from typing import Tuple, List
+from math import pi
 
 from phys702hw5 import runge_kutta
 from phys702hw5 import derivatives
 
 
-def solve_python(x_init:float,theta:float,h:float,max_iter=1000)->Tuple[List,List]:
+
+def solve_python(y_init:float,theta:float,h:float,max_iter=1000)->Tuple[List,List]:
     """
     Solve the Lane-Emden equation using a fourth-order Runge-Kutta method.
     
     Parameters
     ----------
-    x_init : float
-        The initial x value.
+    y_init : float
+        The initial y value.
     theta : float
         The angle from the vertical.
     h : float
@@ -46,8 +48,8 @@ def solve_python(x_init:float,theta:float,h:float,max_iter=1000)->Tuple[List,Lis
     max_iter : int, optional
         The maximum number of iterations. The default is 1000.
     """
-    x_prev = x_init
-    y_prev = 1
+    x_prev = 0
+    y_prev = y_init
     z_prev = 0
     yprime = derivatives.get_yprime()
     zprime = derivatives.get_zprime(theta)
@@ -56,7 +58,7 @@ def solve_python(x_init:float,theta:float,h:float,max_iter=1000)->Tuple[List,Lis
     ys = []
     zs = []
     def stop_condition(x,y,z):
-        if x>3.0:
+        if y>0.5*pi:
             return True
         return False
         
