@@ -4,6 +4,10 @@ Derivates to use in the Runge-Kutta method.
 
 """
 from typing import Callable
+from math import sin,cos
+
+G = 9.8 # m s-2
+A = 0.45 # m
 
 
 def get_yprime() -> Callable:
@@ -37,14 +41,14 @@ def get_yprime() -> Callable:
     return yprime
 
 
-def get_zprime(n) -> Callable:
+def get_zprime(theta:float) -> Callable:
     """
     Get the zprime function.
 
     Parameters
     ----------
-    n : int
-        The index of the polytrope.
+    theta: float
+        The angle from the vertical in radians
 
     Returns
     -------
@@ -69,5 +73,5 @@ def get_zprime(n) -> Callable:
         float
             The zprime value.
         """
-        return -y**n - 2/x*z
+        return (3*G)/(2*A) * sin(theta) * cos(y)
     return zprime
