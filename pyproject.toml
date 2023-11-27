@@ -1,0 +1,14 @@
+[project]
+name = "phys702hw5"
+authors = [
+    {name = "Ted Johnson", email = "ted.johnson@unlv.edu"},
+]
+description = "Goldstein Ch 5 #30"
+readme = "README.md"
+
+version = "0.1"
+requires-python = ">=3.8"
+license = {text = "MIT"}
+dependencies = [
+
+    ]
